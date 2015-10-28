@@ -13,7 +13,7 @@
 <img src="http://cdn6.jinxidao.com/uploads/active/images/coupons-12/200x200.jpg?v=2">
 
 <script type="text/javascript">
-var version = 3
+var version = 4
 alert(version)
 var imgUrl = "http://cdn6.jinxidao.com/uploads/active/images/coupons-12/200x200.jpg";
 var lineLink = "http://k-tools.cn/weixin-share.html";
@@ -45,13 +45,7 @@ wx.ready(function(){
         title: shareTitle,
         desc: descContent,
         link: lineLink,
-        imgUrl: imgUrl,
-        success: function(){
-            successShare();
-        },
-        cancel: function(){
-            cancelShare();
-        }
+        imgUrl: imgUrl
     });
     wx.onMenuShareTimeline({
         title: shareTitle,
