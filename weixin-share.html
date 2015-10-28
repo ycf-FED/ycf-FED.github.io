@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>测试微信分享</title>
+</head>
+<body>
+
+<h1>测试微信分享</h1>
+
+<script type="text/javascript">
+var imgUrl = "http://cdn6.jinxidao.com/uploads/active/images/coupons-12/200x200.jpg";
+var lineLink = "http://k-tools.cn/weixin-share.html";
+var descContent = "要出发周边游给大家送福利啦！现在打开要出发APP即可领150元现金券，还在等什么，开抢啊!";
+var shareTitle = "12月岁末大献礼，要出发周边游150元大礼包限时抢！";
+var cancelShare = function(){
+    alert("cancel");
+}
+var successShare = function(){
+    alert("success");
+}
+</script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+wx.config({
+    debug: true,
+    appId: 'wxc9d060d3852a6ed2',
+    timestamp: 1446024316487,
+    nonceStr: '3WZYTPz0wzc',
+    signature: '01a067736d25ea0a5c36d2c2e31641d426ac371b',
+    jsApiList: [
+        'onMenuShareAppMessage',
+        'onMenuShareTimeline'
+    ]
+});
+
+wx.ready(function(){
+    wx.onMenuShareAppMessage({
+        title: shareTitle,
+        desc: descContent,
+        link: lineLink,
+        imgUrl: imgUrl,
+        success: function(){
+            successShare();
+        },
+        cancel: function(){
+            cancelShare();
+        }
+    });
+    wx.onMenuShareTimeline({
+        title: shareTitle,
+        desc: descContent,
+        link: lineLink,
+        imgUrl: imgUrl,
+        success: function(){
+            successShare();
+        },
+        cancel: function(){
+            cancelShare();
+        }
+    });
+});
+</script>
+</body>
+</html>
