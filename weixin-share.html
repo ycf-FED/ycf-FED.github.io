@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h1>测试微信分享 - 1 </h1>
+<h1>测试微信分享 - 2 </h1>
 <img src="http://cdn6.jinxidao.com/uploads/active/images/coupons-12/200x200.jpg?v=2">
 
 <script type="text/javascript">
@@ -32,18 +32,25 @@ wx.config({
     signature: '0edb75d12fb4c3ee7f6e49a2294b10be6a22ef72',
     jsApiList: [
         'onMenuShareAppMessage',
-        'onMenuShareTimeline',
+        'onMenuShareTimeline'
     ]
 });
 
-wx.ready(function(){
+wx.error(function(res){
+    alert("error;")
+});
+
+wx.checkJsApi({
+    jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'],
+    success: function(res) {
+        alert(res.checkResult.onMenuShareAppMessage);
+        // 以键值对的形式返回，可用的api值true，不可用为false
+        // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+    }
+});
+
+// wx.ready(function(){
     wx.onMenuShareAppMessage({
-        title: shareTitle,
-        desc: descContent,
-        link: lineLink,
-        imgUrl: imgUrl
-    });
-    wx.onMenuShareTimeline({
         title: shareTitle,
         desc: descContent,
         link: lineLink,
@@ -55,7 +62,18 @@ wx.ready(function(){
             cancelShare();
         }
     });
-});
+    // wx.onMenuShareTimeline({
+    //     title: shareTitle,
+    //     link: lineLink,
+    //     imgUrl: imgUrl,
+    //     success: function(){
+    //         successShare();
+    //     },
+    //     cancel: function(){
+    //         cancelShare();
+    //     }
+    // });
+// });
 </script>
 </body>
 </html>
