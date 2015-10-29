@@ -36,21 +36,18 @@ wx.config({
     ]
 });
 
-
-
-
-
 wx.ready(function(){
-
+    
     wx.error(function(res){
         alert("error")
     });
+
     wx.checkJsApi({
         jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'],
         success: function(res) {
-            alert(res.checkResult.onMenuShareAppMessage);
             // 以键值对的形式返回，可用的api值true，不可用为false
             // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+            alert(res.checkResult.onMenuShareAppMessage);
         }
     });
 
@@ -66,17 +63,17 @@ wx.ready(function(){
             cancelShare();
         }
     });
-    // wx.onMenuShareTimeline({
-    //     title: shareTitle,
-    //     link: lineLink,
-    //     imgUrl: imgUrl,
-    //     success: function(){
-    //         successShare();
-    //     },
-    //     cancel: function(){
-    //         cancelShare();
-    //     }
-    // });
+    wx.onMenuShareTimeline({
+        title: shareTitle,
+        link: lineLink,
+        imgUrl: imgUrl,
+        success: function(){
+            successShare();
+        },
+        cancel: function(){
+            cancelShare();
+        }
+    });
 });
 </script>
 </body>
