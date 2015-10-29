@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h1>测试微信分享 - 2 </h1>
+<h1>测试微信分享 - 3 </h1>
 <img src="http://cdn6.jinxidao.com/uploads/active/images/coupons-12/200x200.jpg?v=2">
 
 <script type="text/javascript">
@@ -29,27 +29,31 @@ wx.config({
     appId: 'wxc9d060d3852a6ed2',
     timestamp: 1446085974,
     nonceStr: '3WZYTPz0wzc',
-    signature: 'dfc1a016828988d4d7ceabcea077817801adb530',
+    signature: 'ebb948f60985cbcdb07d93867a825847cd9f0f78',
     jsApiList: [
         'onMenuShareAppMessage',
         'onMenuShareTimeline'
     ]
 });
 
-wx.error(function(res){
-    alert("error;")
-});
 
-wx.checkJsApi({
-    jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'],
-    success: function(res) {
-        alert(res.checkResult.onMenuShareAppMessage);
-        // 以键值对的形式返回，可用的api值true，不可用为false
-        // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-    }
-});
 
-// wx.ready(function(){
+
+
+wx.ready(function(){
+
+    wx.error(function(res){
+        alert("error")
+    });
+    wx.checkJsApi({
+        jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'],
+        success: function(res) {
+            alert(res.checkResult.onMenuShareAppMessage);
+            // 以键值对的形式返回，可用的api值true，不可用为false
+            // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+        }
+    });
+
     wx.onMenuShareAppMessage({
         title: shareTitle,
         desc: descContent,
@@ -73,7 +77,7 @@ wx.checkJsApi({
     //         cancelShare();
     //     }
     // });
-// });
+});
 </script>
 </body>
 </html>
